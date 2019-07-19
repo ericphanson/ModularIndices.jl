@@ -30,8 +30,7 @@ Stacktrace:
 
 This package should possibly be called `PeriodicIndicies` and `Mod` renamed to `Periodic` or similar.
 
-This is similar to [FFTViews.jl](https://github.com/JuliaArrays/FFTViews.jl), but instead of constructing a periodic view type into an array,
-it provides an indexing object.
+This is similar to [FFTViews.jl](https://github.com/JuliaArrays/FFTViews.jl), but instead of constructing a periodic view type into an array, it provides an indexing object.
 
 The code is heavily inspired by InvertedIndices.jl (but it's actually much simpler to do modular indexing than inverted indexing), and the idea for `Mod` was discussed on <https://github.com/JuliaLang/julia/issues/32571>.
 

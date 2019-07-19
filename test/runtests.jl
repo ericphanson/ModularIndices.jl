@@ -16,6 +16,10 @@ end
     A = 1:10
     @test A[Mod(11)] == A[1]
 
+    A = collect(1:5)
+    A[Mod(7)] = 0
+    @test A == [1,0,3,4,5]
+    
     A = rand(10)
     @test A[Mod(11)] == A[1]
     @test A[Mod(11:15)] == A[1:5]
@@ -35,4 +39,13 @@ end
     # axes(A) == (Base.IdentityUnitRange(0:2), Base.IdentityUnitRange(1:8))
     @test A[Mod(3), 1] == A[0, 1]
     @test A[0, Mod(9)] == A[0, 1]
+end
+
+
+@testset "Invalid constructions" begin
+    @test_throws MethodError Mod(1.5)
+    @test_throws MethodError Mod([1.5, 2.5])
+    @test_throws MethodError Mod(1.5, 2.5)
+    @test_throws MethodError Mod(1:.1:2)
+    @test_throws MethodError Mod((1,2,3))
 end

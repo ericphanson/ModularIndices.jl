@@ -24,7 +24,7 @@
 
 
 # A very simple and primitive static array to avoid allocations while fulfilling the indexing API
-struct TupleVector{T<:Tuple} <: AbstractVector{Int}
+struct TupleVector{T<:Tuple{Vararg{Int,N}} where N} <: AbstractVector{Int}
     data::T
 end
 Base.size(::TupleVector{<:NTuple{N}}) where {N} = (N,)
