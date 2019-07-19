@@ -28,7 +28,7 @@ Stacktrace:
  [2] top-level scope at none:0
 ```
 
-This package should possibly be called `PeriodicIndicies` and `Mod` renamed to `Periodic` or similar.
+This package should possibly be called `PeriodicIndicies.jl` and `Mod` renamed to `Periodic` or similar.
 
 This is similar to [FFTViews.jl](https://github.com/JuliaArrays/FFTViews.jl), but instead of constructing a periodic view type into an array, it provides an indexing object.
 
@@ -57,4 +57,28 @@ julia> A = reshape(1:8, 2, 4)
 
 julia> A[Mod(4),2]
  4
+```
+
+Works with [OffsetArrays.jl](https://github.com/JuliaArrays/OffsetArrays.jl) too:
+
+```julia
+julia> using OffsetArrays
+
+julia> A = OffsetArray([1,2,3], -1)
+OffsetArray(::Array{Int64,1}, 0:2) with eltype Int64 with indices 0:2:
+ 1
+ 2
+ 3
+
+julia> A[3]
+ERROR: BoundsError: attempt to access OffsetArray(::Array{Int64,1}, 0:2) with eltype Int64 with indices 0:2 at index [3]
+Stacktrace:
+ [1] throw_boundserror(::OffsetArray{Int64,1,Array{Int64,1}}, ::Tuple{Int64}) at ./abstractarray.jl:484
+ [2] checkbounds at ./abstractarray.jl:449 [inlined]
+ [3] getindex(::OffsetArray{Int64,1,Array{Int64,1}}, ::Int64) at /Users/eh540/.julia/packages/OffsetArrays/vIbpP/src/OffsetArrays.jl:135
+ [4] top-level scope at none:0
+
+julia> A[Mod(3)]
+1
+
 ```
