@@ -4,29 +4,35 @@
 [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://ericphanson.github.io/ModularIndicies.jl/dev)
 [![Build Status](https://travis-ci.com/ericphanson/ModularIndicies.jl.svg?branch=master)](https://travis-ci.com/ericphanson/ModularIndicies.jl)
 [![Codecov](https://codecov.io/gh/ericphanson/ModularIndicies.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/ericphanson/ModularIndicies.jl)
-[![Coveralls](https://coveralls.io/repos/github/ericphanson/ModularIndicies.jl/badge.svg?branch=master)](https://coveralls.io/github/ericphanson/ModularIndicies.jl?branch=master)
 
-A simple package with one export: `Mod`. This is an object using for indexing, like `Colon` from Base, and `Not` from [InvertedIndices.jl](https://github.com/mbauman/InvertedIndices.jl).
+A very simple package (26 lines of code before comments, documentation, and tests) with one export: `Mod`. This is an object using for indexing, like `Colon` from Base, and `Not` from [InvertedIndices.jl](https://github.com/mbauman/InvertedIndices.jl). `Mod` provides an easy way to have wrap-around indexing of vectors and arrays (which can otherwise be annoying with 1-based indexing).
 
 Usage:
 ```julia
-julia> A = rand(5)
-5-element Array{Float64,1}:
- 0.42359227989772474
- 0.5413728926587569
- 0.45985418309577053
- 0.7069364422785294
- 0.3925745981095885
+julia> A = rand(3)
+3-element Array{Float64,1}:
+ 0.523471984061487
+ 0.3975791533002422
+ 0.3230510641200286
 
-julia> A[Mod(6)]
-0.42359227989772474
+julia> A[Mod(4)]
+0.523471984061487
 
-julia> A[6]
-ERROR: BoundsError: attempt to access 5-element Array{Float64,1} at index [6]
+julia> A[4]
+ERROR: BoundsError: attempt to access 3-element Array{Float64,1} at index [4]
 Stacktrace:
  [1] getindex(::Array{Float64,1}, ::Int64) at ./array.jl:729
  [2] top-level scope at none:0
 ```
+
+
+Just like regular indexing, `Mod` accepts
+
+* scalars like`A[Mod(1)]` (i.e. type `Int`),
+* ranges like `A[Mod(1:2)]` (`AbstractRange{Int}`)
+* and vectors like `A[Mod([1,2])]`  (`AbstractVector{Int}`). A non-allocating alternative is also provided here, namely `A[Mod(1,2)] == A[Mod([1,2])]`.
+
+and is able to index into collections `A` which are indexable and use `Base.to_indices` to process the indices (which I think mostly are `AbstractArray`'s). For example, `A` could be an `Array`, `OffsetArray`, `SubArray`, `StaticArray`, etc.
 
 This package should possibly be called `PeriodicIndicies.jl` and `Mod` renamed to `Periodic` or similar.
 

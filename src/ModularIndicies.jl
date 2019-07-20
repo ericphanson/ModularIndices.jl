@@ -29,7 +29,7 @@ julia> A[Mod(2:4)]
 
 """
 
-const IndexArrayTypes = Union{AbstractRange{Int}, Vector{Int}, TupleVector}
+const IndexArrayTypes = Union{AbstractRange{Int}, AbstractVector{Int}, TupleVector}
 
 struct Mod{S <: Union{IndexArrayTypes, Int}}
     ind::S
@@ -55,7 +55,6 @@ Mod(i₁::Int, i₂::Int, iₓ::Int...) = Mod(TupleVector((i₁, i₂, iₓ...))
 # For example, A[Mod(5)] == A[mod_range(5, axes(A, 1))]
 @inline function Base.to_indices(A, inds, I::Tuple{Mod, Vararg{Any}})
     return to_indices(A, inds, (mod_range(I[1].ind, inds[1]), tail(I)...))
-
 end
 
 end # module
