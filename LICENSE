@@ -1,3 +1,8 @@
+`src/TupleVector.jl` is slightly modified from InvertedIndices.jl and has a
+MIT license at the top of that file.
+
+For everything else, the following MIT license applies:
+
 Copyright (c) 2019 Eric P. Hanson
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.com/ericphanson/ModularIndicies.jl.svg?branch=master)](https://travis-ci.com/ericphanson/ModularIndicies.jl)
 [![Codecov](https://codecov.io/gh/ericphanson/ModularIndicies.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/ericphanson/ModularIndicies.jl)
 
-A very simple package (26 lines of code before comments, documentation, and tests) with one export: `Mod`. This is an object using for indexing, like `Colon` from Base, and `Not` from [InvertedIndices.jl](https://github.com/mbauman/InvertedIndices.jl). `Mod` provides an easy way to have wrap-around indexing of vectors and arrays (which can otherwise be annoying with 1-based indexing).
+A very simple package (26 lines of code before comments, docstring, and tests) with one export: `Mod`. This is an object using for indexing, like `Colon` from Base, and `Not` from [InvertedIndices.jl](https://github.com/mbauman/InvertedIndices.jl). `Mod` provides an easy way to have wrap-around indexing of vectors and arrays (which can otherwise be annoying with 1-based indexing).
 
 Usage:
 ```julia
