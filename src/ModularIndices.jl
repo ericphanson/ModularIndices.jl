@@ -6,6 +6,8 @@ export Mod
 
 include("TupleVector.jl")
 
+const IndexArrayTypes = Union{AbstractRange{Int}, AbstractVector{Int}, TupleVector}
+
 """
     Mod(idx)
 
@@ -28,9 +30,6 @@ julia> A[Mod(2:4)]
 ```
 
 """
-
-const IndexArrayTypes = Union{AbstractRange{Int}, AbstractVector{Int}, TupleVector}
-
 struct Mod{S <: Union{IndexArrayTypes, Int}}
     ind::S
 end
