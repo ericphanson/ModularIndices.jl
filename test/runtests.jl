@@ -1,4 +1,4 @@
-using ModularIndicies
+using ModularIndices
 using Test, OffsetArrays, StaticArrays
 
 @testset "0-d" begin

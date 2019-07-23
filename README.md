@@ -1,7 +1,7 @@
-# ModularIndicies
+# ModularIndices
 
-[![Build Status](https://travis-ci.com/ericphanson/ModularIndicies.jl.svg?branch=master)](https://travis-ci.com/ericphanson/ModularIndicies.jl)
-[![Codecov](https://codecov.io/gh/ericphanson/ModularIndicies.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/ericphanson/ModularIndicies.jl)
+[![Build Status](https://travis-ci.com/ericphanson/ModularIndices.jl.svg?branch=master)](https://travis-ci.com/ericphanson/ModularIndices.jl)
+[![Codecov](https://codecov.io/gh/ericphanson/ModularIndices.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/ericphanson/ModularIndices.jl)
 
 A very simple package (26 lines of code before comments, docstring, and tests) with one export: `Mod`. This is an object using for indexing, like `Colon` from Base, and `Not` from [InvertedIndices.jl](https://github.com/mbauman/InvertedIndices.jl). `Mod` provides an easy way to have wrap-around indexing of vectors and arrays (which can otherwise be annoying with 1-based indexing).
 
@@ -32,7 +32,7 @@ Just like regular indexing, `Mod` accepts
 
 and is able to index into collections `A` which are indexable and use `Base.to_indices` to process the indices (which I think mostly are `AbstractArray`'s). For example, `A` could be an `Array`, `OffsetArray`, `SubArray`, `StaticArray`, etc.
 
-This package should possibly be called `PeriodicIndicies.jl` and `Mod` renamed to `Periodic` or similar.
+This package should possibly be called `PeriodicIndices.jl` and `Mod` renamed to `Periodic` or similar.
 
 This is similar to [FFTViews.jl](https://github.com/JuliaArrays/FFTViews.jl), but instead of constructing a periodic view type into an array, it provides an indexing object.
 

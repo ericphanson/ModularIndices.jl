@@ -1,4 +1,4 @@
-module ModularIndicies
+module ModularIndices
 
 using Base: tail
 import Base.getindex
@@ -47,7 +47,7 @@ Mod(i₁::Int, i₂::Int, iₓ::Int...) = Mod(TupleVector((i₁, i₂, iₓ...))
 
 @inline mod_range(i::IndexArrayTypes, r) = TupleVector(ntuple(j -> mod_range(i[j], r), length(i)))
 
-# By construction, `Mod` indicies are be in bounds
+# By construction, `Mod` indices are be in bounds
 @inline Base.checkindex(::Type{Bool}, inds::AbstractUnitRange, index::Mod) = true
 
 
