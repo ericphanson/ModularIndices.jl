@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.com/ericphanson/ModularIndices.jl.svg?branch=master)](https://travis-ci.com/ericphanson/ModularIndices.jl)
 [![Codecov](https://codecov.io/gh/ericphanson/ModularIndices.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/ericphanson/ModularIndices.jl)
 
+Note: this package was made before I realized you could do e.g. `A[mod1(4, end)]` without any external packages, which probably suffices for most cases.
+
 A very simple package (26 lines of code before comments, docstring, and tests) with one export: `Mod`. This is an object using for indexing, like `Colon` from Base, and `Not` from [InvertedIndices.jl](https://github.com/mbauman/InvertedIndices.jl). `Mod` provides an easy way to have wrap-around indexing of vectors and arrays (which can otherwise be annoying with 1-based indexing).
 
 Usage:
